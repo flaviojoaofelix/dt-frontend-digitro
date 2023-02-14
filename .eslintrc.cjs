@@ -20,4 +20,8 @@ module.exports = {
   rules: {
     // Configurações específicas de regras do ESLint vão aqui
   },
+  "env": {
+    "browser": true,
+    "node": true
+  }
 };
