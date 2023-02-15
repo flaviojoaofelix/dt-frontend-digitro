@@ -55,6 +55,12 @@ Plugin que verifica problemas de acessibilidade do JSX com ESLint
 Regras específicas de React para ESLint
 ```
 
+9. npm install socket.io-client
+
+```
+Biblioteca websocket para trabalhar com a API
+```
+
 </details>
 
 ### Configuração

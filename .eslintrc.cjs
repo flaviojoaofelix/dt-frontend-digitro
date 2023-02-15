@@ -18,6 +18,10 @@ module.exports = {
     },
   },
   rules: {
-    // Configurações específicas de regras do ESLint vão aqui
+    'react/react-in-jsx-scope': 0,
   },
+  "env": {
+    "browser": true,
+    "node": true
+  }
 };
