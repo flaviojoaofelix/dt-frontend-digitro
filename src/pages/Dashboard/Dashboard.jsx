@@ -63,6 +63,10 @@ function Dashboard() {
       console.log(data);
     });
 
+    socket.on('USER_CONNECTION_ERROR', ({ error }) => {
+      handleError({ type: 'USER_CONNECTION_ERROR', message: error });
+    });
+
     socket.on('USER_DISCONNECT', (data) => {
       console.log(data);
     })
