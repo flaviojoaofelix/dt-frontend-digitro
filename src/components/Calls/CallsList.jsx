@@ -1,27 +1,24 @@
-import PropTypes from 'prop-types';
+import { useContext } from 'react';
 
-function CallsList({ calls }) {
+import { CallsContext } from '../../contexts/CallsContext';
+
+function CallsList() {
+  const { calls, selectCall } = useContext(CallsContext);
+
   return (
-    <ul>
+    <div>
       { calls.length ? calls.map((call) => (
-        <li key={call.callId}>
-          <span>{call.caller}</span>
-          <span>{call.service}</span>
-          <span>{call.startDate}</span>
-        </li>
-      )) : (<li>Nenhuma chamada</li>) }
-    </ul>
+        <button
+          key={call.callId}
+          onClick={() => selectCall(call.callId)}
+        >
+            <span >{call.caller}</span>
+            <span>{call.service}</span>
+            <span>{call.startDate}</span>
+        </button>
+      )) : (<h3>Nenhuma chamada</h3>) }
+    </div>
   );
 }
-
-CallsList.propTypes = {
-  calls: PropTypes.arrayOf(PropTypes.shape({
-    callId: PropTypes.string.isRequired,
-    media: PropTypes.string,
-    startDate: PropTypes.string.isRequired,
-    service: PropTypes.string.isRequired,
-    caller: PropTypes.string.isRequired,
-  })).isRequired,
-};
 
 export default CallsList
