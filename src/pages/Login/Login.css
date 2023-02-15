@@ -1,0 +1,16 @@
+body {
+  background: #183b64;
+  background: linear-gradient(to right, #173f62, #1a425f);
+}
+
+.btn-login {
+  font-size: 0.9rem;
+  letter-spacing: 0.05rem;
+  padding: 0.75rem 1rem;
+}
+
+.responsive-image {
+  width: 60%;
+  min-width: 130px;
+  height: auto;
+}
