@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { io } from 'socket.io-client';
 
 import { AuthContext } from '../../contexts/AuthContext';
+import Header from '../../components/Layout/Header';
 import CallsList from '../../components/Calls/CallsList';
 
 
@@ -15,7 +16,6 @@ const socket = io('http://dev.digitro.com', {
 });
 
 function Dashboard() {
-  const [isConnected, setIsConnected] = useState(socket.connected)
   const [calls, setCalls] = useState([])
   const [apiError, setApiError] = useState(false)
 
@@ -45,20 +45,19 @@ function Dashboard() {
   }
 
   useEffect(() => {
-    connect();
+    if (auth.user) {
+      connect();
+    }
 
     socket.on('USER_CONNECTED', (data) => {
-      setIsConnected(true);
       console.log(data);
     });
 
     socket.on('USER_DISCONNECT', (data) => {
-      setIsConnected(false);
       console.log(data);
     })
 
     socket.on('USER_DISCONNECTED', (data) => {
-      setIsConnected(false);
       console.log(data)
     })
 
@@ -107,11 +106,9 @@ function Dashboard() {
 
   return (
     <div className="App">
-      <h1>Teste</h1>
-      <h2>{ isConnected ? "Conectado!" : "Desconectado!" }</h2>
+      <Header logout={disconnect} />
       { apiError && (<span>{apiError.type}: {apiError.message}</span>) }
       <CallsList calls={calls} />
-      <input type="button" name="disconnect" value="Desconectar" onClick={disconnect} />
     </div>
   );
 };
