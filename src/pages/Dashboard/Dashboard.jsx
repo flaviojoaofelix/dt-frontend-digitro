@@ -3,9 +3,11 @@ import { useNavigate } from 'react-router-dom';
 import { io } from 'socket.io-client';
 
 import { AuthContext } from '../../contexts/AuthContext';
+import { CallsContext } from '../../contexts/CallsContext';
+
 import Header from '../../components/Layout/Header';
 import CallsList from '../../components/Calls/CallsList';
-
+import CallDetails from '../../components/Calls/CallDetails';
 
 const socket = io('http://dev.digitro.com', {
   transports: ['websocket', 'polling', 'flashsocket'],
@@ -16,9 +18,9 @@ const socket = io('http://dev.digitro.com', {
 });
 
 function Dashboard() {
-  const [calls, setCalls] = useState([])
-  const [apiError, setApiError] = useState(false)
+  const [apiError, setApiError] = useState(false);
 
+  const { addCall, cleanCalls } = useContext(CallsContext);
   const auth = useContext(AuthContext)
   const navigate = useNavigate()
 
@@ -41,6 +43,7 @@ function Dashboard() {
       username: 'Teste',
     });
     socket.disconnect();
+    cleanCalls();
     auth.signOut(() => navigate('/'));
   }
 
@@ -67,7 +70,7 @@ function Dashboard() {
 
     socket.on('NEW_CALL', (data) => {
       console.log(data)
-      setCalls((prevState) => [...prevState, data])
+      addCall(data)
     })
 
     socket.on('NEW_CALL_ANSWERED', (data) => {
@@ -108,7 +111,8 @@ function Dashboard() {
     <div className="App">
       <Header logout={disconnect} />
       { apiError && (<span>{apiError.type}: {apiError.message}</span>) }
-      <CallsList calls={calls} />
+      <CallsList />
+      <CallDetails />
     </div>
   );
 };
