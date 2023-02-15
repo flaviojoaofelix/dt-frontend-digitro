@@ -11,6 +11,7 @@ const socket = io('http://dev.digitro.com', {
 });
 
 function Dashboard() {
+  const [user, setUser] = useState(false);
   const [isConnected, setIsConnected] = useState(socket.connected)
   const [calls, setCalls] = useState([])
   const [apiError, setApiError] = useState(false)
@@ -21,7 +22,29 @@ function Dashboard() {
     setTimeout(() => setApiError(false), 8000)
   }
 
+  const connect = () => {
+    socket.connect();
+    socket.emit('USER_CONNECT', {
+      username: user.username,
+      maxCalls: Number(user.maxCalls),
+    });
+  }
+
+  const disconnect = () => {
+    socket.emit('USER_DISCONNECT', {
+      username: 'Teste',
+    });
+    socket.disconnect();
+    setIsConnected(false);
+    setUser(false);
+    setCalls([]);
+  }
+
   useEffect(() => {
+    if(!user) {
+      setUser(JSON.parse(localStorage.getItem('callsUser')));
+    }
+
     socket.on('USER_CONNECTED', (data) => {
       setIsConnected(true);
       console.log(data);
@@ -80,21 +103,11 @@ function Dashboard() {
     }
   }, [])
 
-  const connect = () => {
-      socket.connect();
-      socket.emit('USER_CONNECT', {
-        username: 'Teste',
-        maxCalls: 4,
-      });
-  }
-
-  const disconnect = () => {
-    socket.emit('USER_DISCONNECT', {
-      username: 'Teste',
-    });
-    socket.disconnect();
-    setIsConnected(false);
-  }
+  useEffect(() => {
+    if (user) {
+      connect();
+    }
+  }, [user])
 
   return (
     <div className="App">
