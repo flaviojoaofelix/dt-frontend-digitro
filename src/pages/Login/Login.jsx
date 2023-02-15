@@ -1,16 +1,23 @@
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useState, useContext } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
+
+import { AuthContext } from '../../contexts/AuthContext';
 
 function Login() {
   const [formData, setFormData] = useState({ username: '', maxCalls: '1' });
 
   const navigate = useNavigate();
+  const location = useLocation();
+  const auth = useContext(AuthContext);
+
+  const from = location.state?.from?.pathname || '/';
 
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    localStorage.setItem('callsUser', JSON.stringify(formData));
-    navigate('/');
+    auth.signIn(formData, () => {
+      navigate(from, { replace: true });
+    });
   }
 
   const handleChange = (event) => {

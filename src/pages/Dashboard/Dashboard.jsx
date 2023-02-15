@@ -1,5 +1,8 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { io } from 'socket.io-client';
+
+import { AuthContext } from '../../contexts/AuthContext';
 
 
 const socket = io('http://dev.digitro.com', {
@@ -11,10 +14,12 @@ const socket = io('http://dev.digitro.com', {
 });
 
 function Dashboard() {
-  const [user, setUser] = useState(false);
   const [isConnected, setIsConnected] = useState(socket.connected)
   const [calls, setCalls] = useState([])
   const [apiError, setApiError] = useState(false)
+
+  const auth = useContext(AuthContext)
+  const navigate = useNavigate()
 
   const handleError = ({ type, message }) => {
     setApiError({ type, message })
@@ -25,8 +30,8 @@ function Dashboard() {
   const connect = () => {
     socket.connect();
     socket.emit('USER_CONNECT', {
-      username: user.username,
-      maxCalls: Number(user.maxCalls),
+      username: auth.user.username,
+      maxCalls: auth.user.maxCalls,
     });
   }
 
@@ -35,15 +40,11 @@ function Dashboard() {
       username: 'Teste',
     });
     socket.disconnect();
-    setIsConnected(false);
-    setUser(false);
-    setCalls([]);
+    auth.signOut(() => navigate('/'));
   }
 
   useEffect(() => {
-    if(!user) {
-      setUser(JSON.parse(localStorage.getItem('callsUser')));
-    }
+    connect();
 
     socket.on('USER_CONNECTED', (data) => {
       setIsConnected(true);
@@ -102,12 +103,6 @@ function Dashboard() {
       socket.off('END_CALL_ERROR')
     }
   }, [])
-
-  useEffect(() => {
-    if (user) {
-      connect();
-    }
-  }, [user])
 
   return (
     <div className="App">
