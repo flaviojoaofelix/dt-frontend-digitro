@@ -20,23 +20,18 @@ const socket = io('http://dev.digitro.com', {
 function Dashboard() {
   const [apiError, setApiError] = useState(false);
 
-  const { addCall, cleanCalls } = useContext(CallsContext);
+  const { addCall, cleanCalls, removeCall } = useContext(CallsContext);
   const auth = useContext(AuthContext)
   const navigate = useNavigate()
 
-  const handleError = ({ type, message }) => {
-    setApiError({ type, message })
-
-    setTimeout(() => setApiError(false), 8000)
-  }
-
+  
   const connect = () => {
     socket.connect();
     socket.emit('USER_CONNECT', {
       username: auth.user.username,
       maxCalls: auth.user.maxCalls,
     });
-  }
+  };
 
   const disconnect = () => {
     socket.emit('USER_DISCONNECT', {
@@ -45,6 +40,18 @@ function Dashboard() {
     socket.disconnect();
     cleanCalls();
     auth.signOut(() => navigate('/'));
+  };
+
+  const endCall = (callId) => {
+    socket.emit('END_CALL', {
+      callId,
+    })
+  };
+
+  const handleError = ({ type, message }) => {
+    setApiError({ type, message })
+
+    setTimeout(() => setApiError(false), 8000)
   }
 
   useEffect(() => {
@@ -85,8 +92,8 @@ function Dashboard() {
       console.log(data)
     })
 
-    socket.on('CALL_ENDED', (data) => {
-      console.log(data)
+    socket.on('CALL_ENDED', ({ callId }) => {
+      removeCall(callId);
     })
 
     socket.on('END_CALL_ERROR', ({ error }) => {
@@ -112,7 +119,7 @@ function Dashboard() {
       <Header logout={disconnect} />
       { apiError && (<span>{apiError.type}: {apiError.message}</span>) }
       <CallsList />
-      <CallDetails />
+      <CallDetails endCall={endCall} />
     </div>
   );
 };
