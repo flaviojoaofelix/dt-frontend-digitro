@@ -35,7 +35,7 @@ function Dashboard() {
 
   const disconnect = () => {
     socket.emit('USER_DISCONNECT', {
-      username: 'Teste',
+      username: auth.user.username,
     });
     socket.disconnect();
     cleanCalls();
