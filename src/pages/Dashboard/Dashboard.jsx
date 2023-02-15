@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { io } from 'socket.io-client';
 
 import { AuthContext } from '../../contexts/AuthContext';
+import CallsList from '../../components/Calls/CallsList';
 
 
 const socket = io('http://dev.digitro.com', {
@@ -109,12 +110,7 @@ function Dashboard() {
       <h1>Teste</h1>
       <h2>{ isConnected ? "Conectado!" : "Desconectado!" }</h2>
       { apiError && (<span>{apiError.type}: {apiError.message}</span>) }
-      <ul>
-        {calls.map((call) => (
-          <li key={call.callId}>{call.caller} - {call.service} - {call.media} - {call.startDate}</li>
-        ))}
-      </ul>
-      <input type="button" name="connect" value="Conectar" onClick={connect} />
+      <CallsList calls={calls} />
       <input type="button" name="disconnect" value="Desconectar" onClick={disconnect} />
     </div>
   );
