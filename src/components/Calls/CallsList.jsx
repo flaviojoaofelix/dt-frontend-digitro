@@ -15,10 +15,6 @@ function CallsList({ isConnected, alertMessage }) {
     <div>
       <h2 className="display-6 text-center">Atendimentos</h2>
       <hr />
-      <p className="text-center">
-        Máximo de <span className="badge bg-primary">{auth.user.maxCalls}</span>{' '}
-        {auth.user.maxCalls > 1 ? 'chamadas' : 'chamada'}
-      </p>
       {alertMessage && <Alerts alertMessage={alertMessage} />}
       {calls.length ? (
         calls.map((call) => (
@@ -38,6 +34,9 @@ function CallsList({ isConnected, alertMessage }) {
           )}
         </div>
       )}
+      <p className="text-center mb-0">
+        Número Máximo de Chamadas: <span className="badge text-bg-info">{auth.user.maxCalls}</span>
+      </p>
     </div>
   );
 }
