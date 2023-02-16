@@ -2,3 +2,4 @@ node_modules/
 dist/
 .prettierrc.cjs
 .eslintrc.cjs
+vite.config.js
