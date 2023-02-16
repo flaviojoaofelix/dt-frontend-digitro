@@ -120,8 +120,8 @@ function Dashboard() {
   return (
     <>
       <Header signOut={disconnect} />
-      <main className="container text-center p-3">
-        <div className="row bg-white rounded-1">
+      <main className="container p-3">
+        <div className="row bg-white rounded-1 py-3">
           <section className="col-sm-4 border-end">
             <CallsList />
           </section>
