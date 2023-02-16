@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import CallTimer from './CallTimer';
 
 function CallListCard({ call, selectCall, selectedCall }) {
   return (
@@ -24,7 +25,9 @@ function CallListCard({ call, selectCall, selectedCall }) {
             </div>
           </div>
           <div className="align-self-center">
-            <h2 className="fs-6 mb-0 text-muted">13m40s</h2>
+            <h2 className="fs-6 mb-0 text-muted">
+              <CallTimer startDate={call.startDate} />
+            </h2>
           </div>
         </div>
       </div>
