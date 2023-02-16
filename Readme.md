@@ -61,6 +61,12 @@ Regras específicas de React para ESLint
 Biblioteca websocket para trabalhar com a API
 ```
 
+10. npm install react-router-dom
+
+```
+Biblioteca para trabalhar com rotas no React
+```
+
 </details>
 
 ### Configuração
