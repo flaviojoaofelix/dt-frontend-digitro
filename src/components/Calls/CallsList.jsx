@@ -9,7 +9,9 @@ import Alerts from '../Layout/Alerts';
 
 function CallsList({ isConnected, alertMessage }) {
   const { calls, selectCall, selectedCall } = useContext(CallsContext);
-  const auth = useContext(AuthContext);
+  const {
+    user: { maxCalls },
+  } = useContext(AuthContext);
 
   return (
     <div>
@@ -35,7 +37,7 @@ function CallsList({ isConnected, alertMessage }) {
         </div>
       )}
       <p className="text-center mb-0">
-        Número Máximo de Chamadas: <span className="badge text-bg-info">{auth.user.maxCalls}</span>
+        Número Máximo de Chamadas: <span className="badge text-bg-info">{maxCalls}</span>
       </p>
     </div>
   );
