@@ -2,17 +2,23 @@ import { useContext } from 'react';
 import PropTypes from 'prop-types';
 
 import { CallsContext } from '../../contexts/CallsContext';
+import { AuthContext } from '../../contexts/AuthContext';
 
 import CallListCard from './CallListCard';
 import Alerts from '../Layout/Alerts';
 
 function CallsList({ isConnected, alertMessage }) {
   const { calls, selectCall, selectedCall } = useContext(CallsContext);
+  const auth = useContext(AuthContext);
 
   return (
     <div>
       <h2 className="display-6 text-center">Atendimentos</h2>
       <hr />
+      <p className="text-center">
+        Máximo de <span className="badge bg-primary">{auth.user.maxCalls}</span>{' '}
+        {auth.user.maxCalls > 1 ? 'chamadas' : 'chamada'}
+      </p>
       {alertMessage && <Alerts alertMessage={alertMessage} />}
       {calls.length ? (
         calls.map((call) => (
