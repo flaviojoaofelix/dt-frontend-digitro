@@ -6,7 +6,7 @@ import { CallsContext } from '../../contexts/CallsContext';
 import CallListCard from './CallListCard';
 import Alerts from '../Layout/Alerts';
 
-function CallsList({ alertMessage }) {
+function CallsList({ isConnected, alertMessage }) {
   const { calls, selectCall, selectedCall } = useContext(CallsContext);
 
   return (
@@ -20,10 +20,16 @@ function CallsList({ alertMessage }) {
         ))
       ) : (
         <div className="text-center">
-          <div className="spinner-border" role="status">
-            <span className="visually-hidden">Loading...</span>
-          </div>
-          <h3 className="lead">Aguardando chamadas...</h3>
+          {isConnected ? (
+            <>
+              <div className="spinner-border" role="status">
+                <span className="visually-hidden">Loading...</span>
+              </div>
+              <h3 className="lead">Aguardando chamadas...</h3>
+            </>
+          ) : (
+            <h3 className="lead">Você está desconectado.</h3>
+          )}
         </div>
       )}
     </div>
@@ -31,6 +37,7 @@ function CallsList({ alertMessage }) {
 }
 
 CallsList.propTypes = {
+  isConnected: PropTypes.bool.isRequired,
   alertMessage: PropTypes.oneOfType([
     PropTypes.shape({
       type: PropTypes.string,
