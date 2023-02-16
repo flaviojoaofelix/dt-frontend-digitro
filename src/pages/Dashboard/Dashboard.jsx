@@ -39,11 +39,11 @@ function Dashboard() {
     cleanCalls();
     deselectCall();
     handleAlert({ type: 'info', title: 'USER_CONNECTION_ERROR', message: 'Desconectando...' });
+    socket.disconnect();
   };
 
   const signOut = () => {
     disconnect();
-    socket.disconnect();
     auth.signOut(() => navigate('/'));
   };
 
@@ -131,7 +131,7 @@ function Dashboard() {
   return (
     <>
       <Header isConnected={socket.connected} connect={connect} disconnect={disconnect} signOut={signOut} />
-      <div className="container"></div>
+      <div className="container mt-2 shadow"></div>
       <main className="container p-3">
         <div className="row bg-white rounded-1 py-3">
           <section className="col-sm-4 border-end">
