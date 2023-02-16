@@ -20,7 +20,7 @@ const socket = io('http://dev.digitro.com', {
 function Dashboard() {
   const [alertMessage, setAlertMessage] = useState(false);
 
-  const { addCall, cleanCalls, removeCall } = useContext(CallsContext);
+  const { addCall, cleanCalls, removeCall, deselectCall } = useContext(CallsContext);
   const auth = useContext(AuthContext);
   const navigate = useNavigate();
 
@@ -36,8 +36,13 @@ function Dashboard() {
     socket.emit('USER_DISCONNECT', {
       username: auth.user.username,
     });
-    socket.disconnect();
     cleanCalls();
+    deselectCall();
+  };
+
+  const signOut = () => {
+    disconnect();
+    socket.disconnect();
     auth.signOut(() => navigate('/'));
   };
 
@@ -123,7 +128,7 @@ function Dashboard() {
 
   return (
     <>
-      <Header signOut={disconnect} />
+      <Header isConnected={socket.connected} connect={connect} disconnect={disconnect} signOut={signOut} />
       <div className="container"></div>
       <main className="container p-3">
         <div className="row bg-white rounded-1 py-3">
