@@ -38,7 +38,7 @@ function Dashboard() {
     });
     cleanCalls();
     deselectCall();
-    handleAlert({ type: 'info', title: 'USER_CONNECTION_ERROR', message: 'Desconectando...' });
+    handleAlert({ type: 'info', title: 'USER_DISCONNECT', message: 'Desconectando...' });
     socket.disconnect();
   };
 
@@ -69,7 +69,8 @@ function Dashboard() {
     });
 
     socket.on('USER_CONNECTION_ERROR', ({ error }) => {
-      handleAlert({ type: 'warning', title: 'USER_CONNECTION_ERROR', message: error });
+      console.log(error);
+      // handleAlert({ type: 'warning', title: 'USER_CONNECTION_ERROR', message: error });
     });
 
     socket.on('USER_DISCONNECT', (data) => {
