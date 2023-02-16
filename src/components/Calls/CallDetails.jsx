@@ -69,7 +69,7 @@ function CallDetails({ endCall }) {
           </div>
         </>
       ) : (
-        <h3 className="lead text-center">Nenhuma chamada selecionada</h3>
+        <h3 className="lead text-center">Nenhuma chamada selecionada.</h3>
       )}
     </div>
   );
