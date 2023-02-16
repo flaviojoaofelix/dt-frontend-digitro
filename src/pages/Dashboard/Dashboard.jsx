@@ -38,6 +38,7 @@ function Dashboard() {
     });
     cleanCalls();
     deselectCall();
+    handleAlert({ type: 'info', title: 'USER_CONNECTION_ERROR', message: 'Desconectando...' });
   };
 
   const signOut = () => {
@@ -76,6 +77,7 @@ function Dashboard() {
     });
 
     socket.on('USER_DISCONNECTED', (data) => {
+      handleAlert({ type: 'success', title: 'USER_CONNECTION_ERROR', message: 'Desconectado!' });
       console.log(data);
     });
 
@@ -133,7 +135,7 @@ function Dashboard() {
       <main className="container p-3">
         <div className="row bg-white rounded-1 py-3">
           <section className="col-sm-4 border-end">
-            <CallsList alertMessage={alertMessage} />
+            <CallsList isConnected={socket.connected} alertMessage={alertMessage} />
           </section>
           <section className="col-sm-8">
             <CallDetails endCall={endCall} />
