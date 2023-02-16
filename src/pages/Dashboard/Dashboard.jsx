@@ -18,7 +18,7 @@ const socket = io('http://dev.digitro.com', {
 });
 
 function Dashboard() {
-  const [apiError, setApiError] = useState(false);
+  const [alertMessage, setAlertMessage] = useState(false);
 
   const { addCall, cleanCalls, removeCall } = useContext(CallsContext);
   const auth = useContext(AuthContext);
@@ -47,10 +47,10 @@ function Dashboard() {
     });
   };
 
-  const handleError = ({ type, message }) => {
-    setApiError({ type, message });
+  const handleAlert = ({ type, title, message }) => {
+    setAlertMessage({ type, title, message });
 
-    setTimeout(() => setApiError(false), 8000);
+    setTimeout(() => setAlertMessage(false), 8000);
   };
 
   useEffect(() => {
@@ -63,7 +63,7 @@ function Dashboard() {
     });
 
     socket.on('USER_CONNECTION_ERROR', ({ error }) => {
-      handleError({ type: 'USER_CONNECTION_ERROR', message: error });
+      handleAlert({ type: 'warning', title: 'USER_CONNECTION_ERROR', message: error });
     });
 
     socket.on('USER_DISCONNECT', (data) => {
@@ -75,12 +75,15 @@ function Dashboard() {
     });
 
     socket.on('USER_DISCONNECTION_ERROR', ({ error }) => {
-      handleError({ type: 'USER_DISCONNECTION_ERROR', message: error });
+      handleAlert({ type: 'warning', title: 'USER_DISCONNECTION_ERROR', message: error });
     });
 
     socket.on('NEW_CALL', (data) => {
       console.log(data);
       addCall(data);
+      socket.emit('NEW_CALL_ANSWERED', {
+        callId: data.callId,
+      });
     });
 
     socket.on('NEW_CALL_ANSWERED', (data) => {
@@ -88,7 +91,7 @@ function Dashboard() {
     });
 
     socket.on('NEW_CALL_ERROR', ({ error }) => {
-      handleError({ type: 'NEW_CALL_ERROR', message: error });
+      handleAlert({ type: 'warning', title: 'NEW_CALL_ERROR', message: error });
     });
 
     socket.on('END_CALL', (data) => {
@@ -97,10 +100,11 @@ function Dashboard() {
 
     socket.on('CALL_ENDED', ({ callId }) => {
       removeCall(callId);
+      handleAlert({ type: 'success', title: 'CALL_ENDED', message: 'Chamada finalizada!' });
     });
 
     socket.on('END_CALL_ERROR', ({ error }) => {
-      handleError({ type: 'END_CALL_ERROR', message: error });
+      handleAlert({ type: 'danger', title: 'END_CALL_ERROR', message: error });
     });
 
     return () => {
@@ -120,17 +124,13 @@ function Dashboard() {
   return (
     <>
       <Header signOut={disconnect} />
+      <div className="container"></div>
       <main className="container p-3">
         <div className="row bg-white rounded-1 py-3">
           <section className="col-sm-4 border-end">
-            <CallsList />
+            <CallsList alertMessage={alertMessage} />
           </section>
           <section className="col-sm-8">
-            {apiError && (
-              <span>
-                {apiError.type}: {apiError.message}
-              </span>
-            )}
             <CallDetails endCall={endCall} />
           </section>
         </div>
