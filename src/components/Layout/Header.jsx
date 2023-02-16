@@ -49,6 +49,10 @@ function Header({ isConnected, connect, disconnect, signOut }) {
                 {isConnected ? 'Desconectar' : 'Conectar'}
               </button>
             </li>
+            <li className="nav-item ms-2 pt-1">
+              Máximo de <span className="badge bg-primary">{auth.user.maxCalls}</span>{' '}
+              {auth.user.maxCalls > 1 ? 'chamadas' : 'chamada'}
+            </li>
           </ul>
           <i className="bi bi-person-circle"></i>
           <span className="navbar-text mx-1">{auth.user.username}</span>
