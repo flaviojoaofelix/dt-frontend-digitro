@@ -1,4 +1,5 @@
 import { useContext } from 'react';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import { AuthContext } from '../../contexts/AuthContext';
@@ -19,9 +20,14 @@ function Header({ isConnected, connect, disconnect, signOut }) {
   return (
     <nav className="navbar navbar-expand-lg bg-body-tertiary shadow">
       <div className="container-fluid">
-        <span className="navbar-brand fs-4">
-          <i className="bi bi-phone-vibrate"></i> Call Control
-        </span>
+        <Link to="/" className="navbar-brand">
+          <img
+            src="/logo-digitro.png"
+            alt="Logo Dígitro Tecnologia"
+            className="d-inline-block align-text-top logo-size"
+          />{' '}
+          Call Control
+        </Link>
         <button
           className="navbar-toggler"
           type="button"
