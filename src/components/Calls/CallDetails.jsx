@@ -11,6 +11,13 @@ function CallDetails({ endCall }) {
     deselectCall();
   };
 
+  const formatDate = (date) => {
+    const formattedDate = new Intl.DateTimeFormat('pt-BR', { dateStyle: 'short', timeStyle: 'medium' }).format(
+      new Date(date),
+    );
+    return formattedDate;
+  };
+
   return (
     <div>
       <h2 className="display-6 text-center">Detalhes da Chamada</h2>
@@ -38,7 +45,7 @@ function CallDetails({ endCall }) {
               </li>
               <li className="list-group-item">
                 <i className="bi bi-calendar-event"> </i>
-                <strong>Data inicial:</strong> {selectedCall.startDate}
+                <strong>Data inicial:</strong> {formatDate(selectedCall.startDate)}
               </li>
               <li className="list-group-item">
                 <i className="bi bi-building"> </i>
