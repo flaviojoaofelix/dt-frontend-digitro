@@ -42,7 +42,10 @@ function Header({ isConnected, connect, disconnect, signOut }) {
         <div className="collapse navbar-collapse" id="navbarText">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item">
-              <button className="clear-button-style nav-link" onClick={handleConnection}>
+              <button
+                className={`btn btn-outline-${isConnected ? 'danger' : 'primary'} btn-sm`}
+                onClick={handleConnection}
+              >
                 {isConnected ? 'Desconectar' : 'Conectar'}
               </button>
             </li>
