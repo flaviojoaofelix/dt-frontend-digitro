@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 
 function CallTimer({ startDate }) {
   const [time, setTime] = useState(0);
@@ -22,5 +23,9 @@ function CallTimer({ startDate }) {
 
   return `${minutes}:${seconds}`;
 }
+
+CallTimer.propTypes = {
+  startDate: PropTypes.string.isRequired,
+};
 
 export default CallTimer;
