@@ -30,6 +30,10 @@ Projeto proposto pela [Dígitro](https://www.digitro.com/) para o Desafio Técni
 
 - Ferramenta para formatação do código.
 
+7. **Bootstrap**[^7]
+
+- Biblioteca para estilização CSS do layout.
+
 ## Preview da Aplicação
 
 - [Github Pages](https://flaviojoaofelix.dev/dt-frontend-digitro/)
@@ -40,13 +44,13 @@ Projeto proposto pela [Dígitro](https://www.digitro.com/) para o Desafio Técni
 
 1. Para rodar locamente:
 
-- **NodeJS**: v16+[^7]
-- **NPM**: v8+[^8]
+- **NodeJS**: v16+[^8]
+- **NPM**: v8+[^9]
 
 2. Para rodar com Docker
 
-- **Docker**: v20+[^9]
-- **Docker Compose**: v2+[^10]
+- **Docker**: v20+[^10]
+- **Docker Compose**: v2+[^11]
 
 ### Passo a Passo
 
@@ -312,10 +316,12 @@ Configuração do Prettier para ignorar arquivos
 
 [^6]: [Prettier](https://prettier.io/)
 
-[^7]: [NodeJS](https://nodejs.org/)
+[^7]: [Bootstrap](https://getbootstrap.com/)
 
-[^8]: [NPM](https://www.npmjs.com/)
+[^8]: [NodeJS](https://nodejs.org/)
 
-[^9]: [Docker](https://www.docker.com/)
+[^9]: [NPM](https://www.npmjs.com/)
 
-[^10]: [Docker Compose](https://docs.docker.com/compose/)
+[^10]: [Docker](https://www.docker.com/)
+
+[^11]: [Docker Compose](https://docs.docker.com/compose/)
