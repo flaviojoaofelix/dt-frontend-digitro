@@ -4,7 +4,7 @@
 
 Projeto proposto pela [Dígitro](https://www.digitro.com/) para o Desafio Técnico referente ao processo seletivo, onde foi solicitado a criação de uma aplicação de conversas de chat utilizando ReactJS e Socket.io.
 
-### Tenologias Utilizadas
+## Tenologias Utilizadas
 
 1. **ViteJS**[^1]
 
@@ -30,55 +30,57 @@ Projeto proposto pela [Dígitro](https://www.digitro.com/) para o Desafio Técni
 
 - Ferramenta para formatação do código.
 
-### Como Utilizar
+## Como Utilizar
 
-#### Requisitos
+### Requisitos
 
-- **NodeJS**: v16+
+- **NodeJS**: v16+[^7]
 
-#### Passos para Instalação/Configuração
+<details>
+  <summary>Instalação e Configuração</summary>
+  1. Faça o clone do repositório:
 
-1. Faça o clone do repositório:
+  ```bash
+  git clone git@github.com:flaviojoaofelix/dt-frontend-digitro.git
+  ```
 
-```
-git clone git@github.com:flaviojoaofelix/dt-frontend-digitro.git
-```
+  2. Acesse o diretório do projeto
 
-2. Acesse o diretório do projeto
+  ```bash
+  cd dt-frontend-digitro
+  ```
 
-```
-cd dt-frontend-digitro
-```
+  2. Instale as dependências:
 
-2. Instale as dependências:
+  ```bash
+  npm install
+  ```
 
-```
-npm install
-```
-
-3. Inicie a aplicação:
+  3. Inicie a aplicação:
 
 - Em modo desenvolvedor:
 
-```
-npm run dev
-```
+  ```bash
+  npm run dev
+  ```
 
-E acesse a aplicação pelo URL: <http://127.0.0.1:5173/>
+  E acesse a aplicação pelo URL: <http://127.0.0.1:5173/>
 
 - Em modo produção:
 
-```
-npm run build
-```
+  ```bash
+  npm run build
+  ```
 
-```
-npm run preview
-```
+  ```bash
+  npm run preview
+  ```
 
-E acesse a aplicação pelo URL: <http://127.0.0.1:4173/>
+  E acesse a aplicação pelo URL: <http://127.0.0.1:4173/>
 
-### Requisitos do Desafio Técnico
+</details>
+
+## Requisitos da Aplicação
 
 <details>
   <summary>Funcionalidades da Aplicação</summary>
@@ -110,111 +112,109 @@ E acesse a aplicação pelo URL: <http://127.0.0.1:4173/>
   1. O candidato deverá disponibilizar o link do seu projeto no GitHub com a documentação de como configurar e colocar o projeto para rodar.
 </details>
 
-### Passos utilizados no desenvolvimento para configuração do ambiente
+## Passos utilizados no desenvolvimento para configuração do ambiente
 
 <details>
   <summary>Comandos utilizados para iniciar a aplicação</summary>
 
 1. npm create vite@latest
 
-```
+```text
 Instalação do ViteJS com React JavaScript
 ```
 
 2. npm install
 
-```
+```text
 Instalação e configuração inicial das dependências do Vite
 ```
 
 3. npm install eslint
 
-```
+```text
 Instalação do ESLint utilizado afim de padronizar o código desenvolvido.
 ```
 
 4. npm install prettier
 
-```
+```text
 Instalação do Prettier para formatação do código.
 ```
 
 5. npm install eslint-config-prettier
 
-```
+```text
 Instalação da biblioteca que integra o ESLint com o Prettier.
 ```
 
 6. npm install eslint-plugin-import
 
-```
+```text
 Plugin que aponta ao ESLint como resolver as importações
 ```
 
 7. npm install eslint-plugin-jsx-a11y
 
-```
+```text
 Plugin que verifica problemas de acessibilidade do JSX com ESLint
 ```
 
 8. npm install eslint-plugin-react
 
-```
+```text
 Regras específicas de React para ESLint
 ```
 
 9. npm install socket.io-client
 
-```
+```text
 Biblioteca websocket para trabalhar com a API
 ```
 
 10. npm install react-router-dom
 
-```
+```text
 Biblioteca para trabalhar com rotas no React
 ```
 
 11. npm install gh-pages --save-dev
 
-```
+```text
 Ferramenta para publicar o projeto no GitHub Pages
 ```
 
 </details>
 
-### Configuração
-
 <details>
-  <summary>Comandos utilizados para configuração a aplicação</summary>
+  <summary>Comandos utilizados para configuração da aplicação</summary>
 
 1. Criar o arquivo .eslintrc.js na raiz do projeto
 
-```
+```text
 Configuração do ESLint
 ```
 
 2. Criar o arquivo .eslintignore na raiz do projeto
 
-```
+```text
 Configuração do ESLint para ignorar arquivos
 ```
 
 3. Adicionar o comando "lint" ao package.json
 
-```
+```text
 Configuração do ESLint para rodar o comando lint através do NPM
 ```
 
 4. Criar o arquivo .prettierrc na raiz do projeto
 
-```
+```text
 Configuração do Prettier
 ```
 
 5. Criar o arquivo .prettierignore na raiz do projeto
 
-```
+```text
 Configuração do Prettier para ignorar arquivos
 ```
 
@@ -233,3 +233,5 @@ Configuração do Prettier para ignorar arquivos
 [^5]: [ESLint](https://eslint.org/)
 
 [^6]: [Prettier](https://prettier.io/)
+
+[^7]: [NodeJS](https://nodejs.org/)
