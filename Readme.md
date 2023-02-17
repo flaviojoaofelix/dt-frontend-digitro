@@ -2,7 +2,115 @@
 
 ## Desafio Técnico Front-end
 
-### Instalação
+Projeto proposto pela [Dígitro](https://www.digitro.com/) para o Desafio Técnico referente ao processo seletivo, onde foi solicitado a criação de uma aplicação de conversas de chat utilizando ReactJS e Socket.io.
+
+### Tenologias Utilizadas
+
+1. **ViteJS**[^1]
+
+- Ferramenta para criação do ambiente de desenvolvimento.
+
+2. **ReactJS**[^2]
+
+- Biblioteca JavaScript para criação de interfaces de usuário.
+
+3. **React Router Dom**[^3]
+
+- Biblioteca JavaScript para trabalhar com rotas no React.
+
+4. **Socket.io**[^4]
+
+- Biblioteca JavaScript para trabalhar com WebSockets.
+
+5. **ESLint**[^5]
+
+- Ferramenta para padronização do código.
+
+6. **Prettier**[^6]
+
+- Ferramenta para formatação do código.
+
+### Como Utilizar
+
+#### Requisitos
+
+- **NodeJS**: v16+
+
+#### Passos para Instalação/Configuração
+
+1. Faça o clone do repositório:
+
+```
+git clone git@github.com:flaviojoaofelix/dt-frontend-digitro.git
+```
+
+2. Acesse o diretório do projeto
+
+```
+cd dt-frontend-digitro
+```
+
+2. Instale as dependências:
+
+```
+npm install
+```
+
+3. Inicie a aplicação:
+
+- Em modo desenvolvedor:
+
+```
+npm run dev
+```
+
+E acesse a aplicação pelo URL: <http://127.0.0.1:5173/>
+
+- Em modo produção:
+
+```
+npm run build
+```
+
+```
+npm run preview
+```
+
+E acesse a aplicação pelo URL: <http://127.0.0.1:4173/>
+
+### Requisitos do Desafio Técnico
+
+<details>
+  <summary>Funcionalidades da Aplicação</summary>
+  1. Permitir informar um nome de usuário e a quantidade de chats simultâneos que serão atendidos.
+  2. Exibir a lista de conversas em andamento com a identificação de cada uma delas,
+  3. Exibir os dados da conversa ao clicar sobre uma conversa em andamento.
+</details>
+
+<details>
+  <summary>Funcionalidades do Usuário</summary>
+  1. Poderá conectar e desconectar o usuário.
+    - No momento da conexão informará o nome de usuário e o número máximo de chats simultâneos que o servidor poderá enviar para o usuário.
+    - Quando estiver desconectado não vai receber chats;
+  2. Poderá alternar entre os chats em andamento;
+  3. Poderá finalizar uma chamada;
+</details>
+
+<details>
+  <summary>Informações Técnicas</summary>
+  1. A interface se comunicará com o servidor via websocket (socket.io) que está hospedado em um domínio da Dígitro: http://dev.digitro.com/callcontrol
+  2. Documentação da API disponível no arquivo API.md
+  3. Uma vez o usuário conectado, o servidor começará a enviar eventos de nova chamada para ele até atingir o máximo simultâneo pré-definido na conexão do usuário.
+    - O servidor enviará um evento USER_CONNECTED caso a conexão tenha sido feita com sucesso.
+    - Estas chamadas serão enviadas em intervalos de tempo aleatórios entre 0 e 15 segundos. ⚠Portanto, se na conexão informar o máximo de 1 chamada, fique atento que poderá levar até 15 segundos para o evento com esta chamada ser enviado.⚠
+</details>
+
+<details>
+  <summary>Entrega</summary>
+  1. O candidato deverá disponibilizar o link do seu projeto no GitHub com a documentação de como configurar e colocar o projeto para rodar.
+</details>
+
+### Passos utilizados no desenvolvimento para configuração do ambiente
 
 <details>
   <summary>Comandos utilizados para iniciar a aplicação</summary>
@@ -67,6 +175,12 @@ Biblioteca websocket para trabalhar com a API
 Biblioteca para trabalhar com rotas no React
 ```
 
+11. npm install gh-pages --save-dev
+
+```
+Ferramenta para publicar o projeto no GitHub Pages
+```
+
 </details>
 
 ### Configuração
@@ -105,3 +219,17 @@ Configuração do Prettier para ignorar arquivos
 ```
 
 </details>
+
+## Referências
+
+[^1]: [ViteJS](https://vitejs.dev/)
+
+[^2]: [ReactJS](https://pt-br.reactjs.org/)
+
+[^3]: [React Router Dom](https://reactrouter.com/)
+
+[^4]: [Socket.io](https://socket.io/)
+
+[^5]: [ESLint](https://eslint.org/)
+
+[^6]: [Prettier](https://prettier.io/)
