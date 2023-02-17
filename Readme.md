@@ -32,7 +32,7 @@ Projeto proposto pela [Dígitro](https://www.digitro.com/) para o Desafio Técni
 
 ## Preview da Aplicação
 
-[Github Pages](https://flaviojoaofelix.dev/dt-frontend-digitro/)
+- [Github Pages](https://flaviojoaofelix.dev/dt-frontend-digitro/)
 
 ## Como Utilizar Localmente
 
