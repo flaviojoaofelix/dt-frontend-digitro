@@ -2,9 +2,11 @@
 
 ## Desafio Técnico Front-end
 
+### Call Control
+
 Projeto proposto pela [Dígitro](https://www.digitro.com/) para o Desafio Técnico referente ao processo seletivo, onde foi solicitado a criação de uma aplicação de conversas de chat utilizando ReactJS e Socket.io.
 
-## Tenologias Utilizadas
+## Tecnologias Utilizadas
 
 1. **ViteJS**[^1]
 
