@@ -9,8 +9,8 @@ import Header from '../../components/Layout/Header';
 import CallsList from '../../components/Calls/CallsList';
 import CallDetails from '../../components/Calls/CallDetails';
 
-const socket = io('http://dev.digitro.com', {
-  transports: ['websocket', 'polling', 'flashsocket'],
+const socket = io('wss://dev.digitro.com', {
+  transports: ['websocket'],
   path: '/callcontrol',
   forceNew: true,
   reconnectionAttempts: 3,
