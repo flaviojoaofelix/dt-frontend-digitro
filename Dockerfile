@@ -1,19 +1,13 @@
-FROM node
+FROM node:16.14.2-alpine
 
 WORKDIR /app
 
-COPY entrypoint.sh /entrypoint.sh
-
-RUN chmod +x /entrypoint.sh
-
 COPY package.json .
 
-RUN npm install
+RUN npm i
 
 COPY . .
 
 EXPOSE 5173
-
-ENTRYPOINT ["/entrypoint.sh"]
 
 CMD ["npm", "run", "dev"]
