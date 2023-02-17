@@ -34,16 +34,25 @@ Projeto proposto pela [Dígitro](https://www.digitro.com/) para o Desafio Técni
 
 - [Github Pages](https://flaviojoaofelix.dev/dt-frontend-digitro/)
 
-## Como Utilizar Localmente
+## Rodando a Aplicação
 
 ### Requisitos
 
-- **NodeJS**: v16+[^7]
+1. Para rodar locamente:
 
-### Instalação e Configuração
+- **NodeJS**: v16+[^7]
+- **NPM**: v8+[^8]
+
+2. Para rodar com Docker
+
+- **Docker**: v20+[^9]
+- **Docker Compose**: v2+[^10]
+
+### Passo a Passo
 
 <details>
-  <summary>Instalação e Configuração</summary>
+  <summary>Para Rodar Localmente</summary>
+
   1. Faça o clone do repositório:
 
   ```bash
@@ -86,7 +95,48 @@ Projeto proposto pela [Dígitro](https://www.digitro.com/) para o Desafio Técni
 
 </details>
 
-## Requisitos da Aplicação
+<details>
+  <summary>Para Rodar com Docker</summary>
+
+  1. Faça o clone do repositório:
+
+  ```bash
+  git clone git@github.com:flaviojoaofelix/dt-frontend-digitro.git
+  ```
+
+  2. Acesse o diretório do projeto
+
+  ```bash
+  cd dt-frontend-digitro
+  ```
+
+  2. Mude para o Branch *'docker'*:
+
+  ```bash
+  git checkout docker
+  ```
+
+  3. Inicie o container Docker:
+
+```bash
+  docker-compose up -d
+  ou
+  docker compose up -d
+  ```
+
+  4. Acesse a aplicação pelo URL: <http://127.0.0.1:5173/>
+
+  5. Para parar o container Docker:
+
+```bash
+  docker-compose down
+  ou
+  docker compose down
+```
+
+</details>
+
+## Requisitos do Desafio
 
 <details>
   <summary>Funcionalidades da Aplicação</summary>
@@ -125,6 +175,20 @@ Projeto proposto pela [Dígitro](https://www.digitro.com/) para o Desafio Técni
   1. O candidato deverá disponibilizar o link do seu projeto no GitHub com a documentação de como configurar e colocar o projeto para rodar.
   
 </details>
+
+## Deploy
+
+1. Digitar o seguinte comando para gerar a build:
+
+```bash
+npm run build
+```
+
+2. Se desejar ver o preview, digitar o seguinte comando:
+
+```bash
+npm run preview
+```
 
 ## Passos utilizados no desenvolvimento para configuração do ambiente
 
@@ -249,3 +313,9 @@ Configuração do Prettier para ignorar arquivos
 [^6]: [Prettier](https://prettier.io/)
 
 [^7]: [NodeJS](https://nodejs.org/)
+
+[^8]: [NPM](https://www.npmjs.com/)
+
+[^9]: [Docker](https://www.docker.com/)
+
+[^10]: [Docker Compose](https://docs.docker.com/compose/)
