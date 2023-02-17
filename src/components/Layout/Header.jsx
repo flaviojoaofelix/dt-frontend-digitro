@@ -22,7 +22,7 @@ function Header({ isConnected, connect, disconnect, signOut }) {
       <div className="container-fluid">
         <Link to="/" className="navbar-brand">
           <img
-            src="/logo-digitro.png"
+            src="https://flaviojoaofelix.dev/dt-frontend-digitro/logo-digitro.png"
             alt="Logo Dígitro Tecnologia"
             className="d-inline-block align-text-top logo-size"
           />{' '}
