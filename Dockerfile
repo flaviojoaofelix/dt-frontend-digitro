@@ -5,9 +5,11 @@ WORKDIR /app
 COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 
-ADD . .
+COPY . .
 
 RUN npm install
+
+EXPOSE 5173
 
 ENTRYPOINT ["/entrypoint.sh"]
 
