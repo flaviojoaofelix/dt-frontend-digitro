@@ -30,11 +30,17 @@ Projeto proposto pela [Dígitro](https://www.digitro.com/) para o Desafio Técni
 
 - Ferramenta para formatação do código.
 
-## Como Utilizar
+## Preview da Aplicação
+
+[Github Pages](https://flaviojoaofelix.dev/dt-frontend-digitro/)
+
+## Como Utilizar Localmente
 
 ### Requisitos
 
 - **NodeJS**: v16+[^7]
+
+### Instalação e Configuração
 
 <details>
   <summary>Instalação e Configuração</summary>
@@ -84,32 +90,40 @@ Projeto proposto pela [Dígitro](https://www.digitro.com/) para o Desafio Técni
 
 <details>
   <summary>Funcionalidades da Aplicação</summary>
+
   1. Permitir informar um nome de usuário e a quantidade de chats simultâneos que serão atendidos.
   2. Exibir a lista de conversas em andamento com a identificação de cada uma delas,
   3. Exibir os dados da conversa ao clicar sobre uma conversa em andamento.
+
 </details>
 
 <details>
   <summary>Funcionalidades do Usuário</summary>
+
   1. Poderá conectar e desconectar o usuário.
     - No momento da conexão informará o nome de usuário e o número máximo de chats simultâneos que o servidor poderá enviar para o usuário.
     - Quando estiver desconectado não vai receber chats;
   2. Poderá alternar entre os chats em andamento;
   3. Poderá finalizar uma chamada;
+
 </details>
 
 <details>
   <summary>Informações Técnicas</summary>
-  1. A interface se comunicará com o servidor via websocket (socket.io) que está hospedado em um domínio da Dígitro: http://dev.digitro.com/callcontrol
+
+  1. A interface se comunicará com o servidor via websocket (socket.io) que está hospedado em um domínio da Dígitro: <http://dev.digitro.com/callcontrol>
   2. Documentação da API disponível no arquivo API.md
   3. Uma vez o usuário conectado, o servidor começará a enviar eventos de nova chamada para ele até atingir o máximo simultâneo pré-definido na conexão do usuário.
     - O servidor enviará um evento USER_CONNECTED caso a conexão tenha sido feita com sucesso.
     - Estas chamadas serão enviadas em intervalos de tempo aleatórios entre 0 e 15 segundos. ⚠Portanto, se na conexão informar o máximo de 1 chamada, fique atento que poderá levar até 15 segundos para o evento com esta chamada ser enviado.⚠
+
 </details>
 
 <details>
   <summary>Entrega</summary>
+
   1. O candidato deverá disponibilizar o link do seu projeto no GitHub com a documentação de como configurar e colocar o projeto para rodar.
+  
 </details>
 
 ## Passos utilizados no desenvolvimento para configuração do ambiente
