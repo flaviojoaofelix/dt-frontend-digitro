@@ -6,16 +6,8 @@ import { AuthContext } from '../../contexts/AuthContext';
 
 import './Header.css';
 
-function Header({ isConnected, connect, disconnect, signOut }) {
+function Header({ isConnected, handleConnection, signOut }) {
   const auth = useContext(AuthContext);
-
-  const handleConnection = () => {
-    if (isConnected) {
-      disconnect();
-    } else {
-      connect();
-    }
-  };
 
   return (
     <nav className="navbar navbar-expand-lg bg-body-tertiary shadow">
@@ -62,9 +54,8 @@ function Header({ isConnected, connect, disconnect, signOut }) {
 }
 
 Header.propTypes = {
-  isConnected: PropTypes.bool.isRequired,
-  connect: PropTypes.func.isRequired,
-  disconnect: PropTypes.func.isRequired,
+  isConnected: PropTypes.bool,
+  handleConnection: PropTypes.func.isRequired,
   signOut: PropTypes.func.isRequired,
 };
 
