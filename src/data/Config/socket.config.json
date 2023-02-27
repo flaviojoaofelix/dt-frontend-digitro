@@ -1,0 +1,10 @@
+{
+  "baseURL": "wss://dev.digitro.com",
+  "params": {
+    "transports": ["websocket"],
+    "path": "/callcontrol",
+    "forceNew": true,
+    "reconnectionAttempts": 3,
+    "timeout": 2000
+  }
+}

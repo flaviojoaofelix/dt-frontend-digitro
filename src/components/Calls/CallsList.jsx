@@ -44,7 +44,7 @@ function CallsList({ isConnected, alertMessage }) {
 }
 
 CallsList.propTypes = {
-  isConnected: PropTypes.bool.isRequired,
+  isConnected: PropTypes.bool,
   alertMessage: PropTypes.oneOfType([
     PropTypes.shape({
       type: PropTypes.string,
