@@ -34,8 +34,8 @@ function Login() {
       <div className="container">
         <div className="row">
           <div className="col-sm-9 col-md-7 col-lg-5 mx-auto">
-            <div class="alert alert-warning d-flex align-items-center justify-content-center mt-2" role="alert">
-              <i class="bi bi-info-circle"> </i>
+            <div className="alert alert-warning d-flex align-items-center justify-content-center mt-2" role="alert">
+              <i className="bi bi-info-circle"> </i>
               <div className="ps-1">Esta é uma aplicação fictícia desenvolvida para fins de teste!</div>
             </div>
             <div className="card border-0 shadow rounded-3 my-5">
@@ -84,8 +84,8 @@ function Login() {
             </div>
             <div className="d-grid mb-4 align-items-center justify-content-center">
               <a href="https://github.com/flaviojoaofelix/dt-frontend-digitro" target="_blank">
-                <button class="btn btn-dark" type="button">
-                  <i class="bi bi-github"> </i>
+                <button className="btn btn-dark" type="button">
+                  <i className="bi bi-github"> </i>
                   Repositório do Projeto
                 </button>
               </a>
