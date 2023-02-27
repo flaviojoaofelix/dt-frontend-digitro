@@ -8,6 +8,7 @@ import useSocket from '../../hooks/useSocket';
 import Header from '../../components/Layout/Header';
 import CallsList from '../../components/Calls/CallsList';
 import CallDetails from '../../components/Calls/CallDetails';
+import Footer from '../../components/Layout/Footer';
 
 function Dashboard() {
   const auth = useContext(AuthContext);
@@ -54,6 +55,7 @@ function Dashboard() {
           </section>
         </div>
       </main>
+      <Footer />
     </>
   );
 }
