@@ -3,19 +3,15 @@ import { io } from 'socket.io-client';
 
 import { CallsContext } from '../contexts/CallsContext';
 
-const socketInstance = io('wss://dev.digitro.com', {
-  transports: ['websocket'],
-  path: '/callcontrol',
-  forceNew: true,
-  reconnectionAttempts: 3,
-  timeout: 2000,
-});
+import socketUserOptions from '../data/Config/socket.config.json';
+
+const socketInstance = io(socketUserOptions.baseURL, socketUserOptions.params);
 
 const useSocket = () => {
   const [socket, setSocket] = useState(socketInstance);
   const [socketAlerts, setSocketAlerts] = useState(false);
 
-  const { addCall, removeCall, cleanCalls } = useContext(CallsContext);
+  const { addCall, removeCall, deselectCall, cleanCalls } = useContext(CallsContext);
 
   const socketConnect = (username, maxCalls) => {
     socket.connect();
@@ -38,6 +34,7 @@ const useSocket = () => {
       username: username,
     });
 
+    deselectCall();
     cleanCalls();
 
     socket.disconnect();
