@@ -85,7 +85,8 @@ function Login() {
             <div className="d-grid mb-4 align-items-center justify-content-center">
               <a href="https://github.com/flaviojoaofelix/dt-frontend-digitro" target="_blank">
                 <button class="btn btn-dark" type="button">
-                  <i class="bi bi-github"></i>
+                  <i class="bi bi-github"> </i>
+                  Repositório do Projeto
                 </button>
               </a>
             </div>
